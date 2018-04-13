@@ -24,14 +24,33 @@ $ npm install serverless -g
 $ sls deploy --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
 ```
 
-## Lambda実行
+## S3バケットポリシー設定
+対象のS3バケットにバケットポリシーを設定する。
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::{your_account_id}:role/S3Cross-debug-ap-northeast-1-lambdaRole"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::{your-backet-name}/*"
+        }
+    ]
+}
+```
+
+## Lambdaを実行
 
 ``` sh
 # デプロイしたLambdaを実行
 $ sls invoke --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
 
-# ローカル実行 (CredentialはLambdaに付与したIAMロールが使われる)
-$ sls invoke local --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
+# ローカル実行 ([default]のShared Credentialを使う)
+$ sls invoke local --function=runner --stage=debug
 
 # 実行ログ表示
 $ sls logs --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
