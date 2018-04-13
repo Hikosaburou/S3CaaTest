@@ -30,7 +30,7 @@ $ sls deploy --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
 # デプロイしたLambdaを実行
 $ sls invoke --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
 
-# ローカル実行 (CredentialはLambdaに付与したIAMロールを使う)
+# ローカル実行 (CredentialはLambdaに付与したIAMロールが使われる)
 $ sls invoke local --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
 
 # 実行ログ表示
