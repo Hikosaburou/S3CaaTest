@@ -11,8 +11,28 @@ KEY__NAME: 'data.json'
 ```
 
 ## Lambdaのデプロイ
-Shared Credentials を控えておく。
+事前に Shared Credentials を控えておく。
 
 ``` sh
 $ sls deploy --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
 ```
+
+## Lambda実行
+
+``` sh
+# デプロイしたLambdaを実行
+$ sls invoke --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
+
+# ローカル実行 (CredentialはLambdaに付与したIAMロールを使う)
+$ sls invoke local --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
+
+# 実行ログ表示
+$ sls logs --aws-profile={YOUR_PROFILE} --function=runner --stage=debug
+```
+
+## Lambda削除
+
+``` sh
+$ sls remove --aws-profile={YOUR_PROFILE} --stage=debug
+```
+
