@@ -1,5 +1,6 @@
 # S3CaaTest
 Test repository of AWS S3 cross account access.
+
 外部アカウントのS3バケットからデータを取ってくる。
 
 ## 準備
@@ -7,7 +8,13 @@ Test repository of AWS S3 cross account access.
 
 ``` yml
 BUCKET_NAME: 'your-backet-name'
-KEY__NAME: 'data.json'
+KEY_NAME: 'data.json'
+```
+
+Serverless Frameworkをインストールしておく
+
+``` sh
+$ npm install serverless -g
 ```
 
 ## Lambdaのデプロイ
